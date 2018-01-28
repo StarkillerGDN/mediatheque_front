@@ -1,0 +1,21 @@
+#layoutTop{
+  margin-top: 50px;
+}
+#rightLayout{
+  display: block;
+
+}
+
+#rightLayout h2{
+  display: inline;
+}
+
+#rightLayout span{
+  font-size: 13px;
+  margin-left: 20px;
+}
+
+#layoutMid{
+  margin-top: 20px;
+}
+

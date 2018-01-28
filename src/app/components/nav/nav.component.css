@@ -1,0 +1,30 @@
+.navbar{
+  background-color: #1560BD;
+}
+#btnNav{
+  background-color: #1560BD;
+  border: none;
+}
+#myNav{
+  float: right;
+}
+#myNav a{
+  color: white;
+  font-family: 'Rubik', serif;
+  font-size: 16px;
+}
+#myNav a:hover{ /* Lien selectionné dans le nav */
+  color: #F0C300;
+}
+.navbar-header span{ /* "Geogeo qui dev" */
+  font-family: 'Lobster', 'cursive';
+  color: #F0C300;
+  font-size: 35px;
+}
+.navbar .navbar-nav > .active > a, /* scroll-spy color change */
+.navbar .navbar-nav > .active > a:hover,
+.navbar .navbar-nav > .active > a:focus{
+  color: white !important;
+  background: #318CE7;
+}
+

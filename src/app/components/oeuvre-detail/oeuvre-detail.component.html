@@ -1,0 +1,55 @@
+<div class="row" id="layoutTop">
+  <div class="col-md-12">
+
+    <div class="col-md-3 col-xs-12">
+      <div id="photoOeuvreLayout">
+        <img src="{{oeuvre?.image}}" alt="Image oeuvre" width="250" height="400"> <!-- ? : observable est async donc pas sûr d'avoir la donnée au moment où je veux l'appeler donc la donnée est indéfini et donc null donc exception-->
+      </div>
+    </div>
+
+    <div class="col-md-9 col-xs-12">
+      <div id="rightLayout">
+          <h2>{{oeuvre?.titre}}</h2>
+          <span class="label label-success">{{oeuvre?.genre}}</span>
+          <h4>{{oeuvre?.annee}}</h4>
+          <h4>{{oeuvre?.duree}} minutes</h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" id="layoutMid">
+  <div class="col-md-12">
+    <div class="col-xs-12">
+        <div id="descriptionLayout">
+          <h4>Description</h4>
+          <p>
+            {{oeuvre?.description}}
+          </p>
+        </div>
+      </div>
+
+      <div class="col-xs-12">
+        <ng-container *ngIf="oeuvre?.realisateur; else artisteTemplate">
+            <h4>Realisateur : {{oeuvre?.realisateur.prenom}} {{oeuvre?.realisateur.nom}}</h4>
+        </ng-container>
+
+        <ng-template #artisteTemplate>
+          <h4>Artistes</h4>
+          <div class="col-md-2" *ngFor="let artiste of oeuvre?.artiste">
+            <img class="img-circle" src="{{artiste.image}}" width="130" height="130" alt="Image Artiste">
+            <p>{{artiste.prenom}} {{artiste.nom}}</p>
+          </div>
+        </ng-template>
+    </div>
+
+    <div *ngIf="oeuvre?.acteur" class="col-xs-12">
+      <h4>Acteurs :</h4>
+      <div class="col-md-2" *ngFor="let acteur of oeuvre?.acteur">
+        <img class="img-circle" src="{{acteur.image}}"  width="130" height="130" alt="Image Acteur">
+        <p>{{acteur.prenom}} {{acteur.nom}}</p>
+      </div>
+    </div>
+
+  </div>
+</div>
