@@ -1,10 +1,10 @@
 import { Film } from './film';
 import { Serie } from './serie';
 
-export class Realisateur {
+export class Director {
   id: Number;
-  nom: string;
-  prenom: string;
+  name: string;
+  firstname: string;
   films: Film[];
   series: Serie[];
 }

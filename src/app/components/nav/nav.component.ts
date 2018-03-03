@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { OeuvreService } from '../../services/oeuvre.service';
+import { ArtworkService } from '../../services/artwork.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,17 +8,17 @@ import { OeuvreService } from '../../services/oeuvre.service';
 })
 export class NavComponent implements OnInit {
 
-  titre: string ="";
-  tabOeuvre: any[];
-  constructor(private oeuvreService: OeuvreService) { }
+  title: string ="";
+  tabArtworks: any[];
+  constructor(private artworkService: ArtworkService) { }
 
   ngOnInit() {
   }
 
-  chercherOeuvre(){
-    this.oeuvreService.findByTitre(this.titre).subscribe((oeuvres)=>{
-      console.log(oeuvres);
-      this.tabOeuvre = oeuvres;
+  searchArtwork(){
+    this.artworkService.findByTitle(this.title).subscribe((artworks)=>{
+      console.log(artworks);
+      this.tabArtworks = artworks;
     }, (error)=>{
       console.log(error);
     });

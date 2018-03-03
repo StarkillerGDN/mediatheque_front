@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Film } from '../../film';
-import { OeuvreService } from '../../services/oeuvre.service';
-import { Serie } from '../../serie';
-import { Musique } from '../../musique';
+import { Film } from '../../entities/film';
+import { ArtworkService } from '../../services/artwork.service';
+import { Serie } from '../../entities/serie';
+import { Music } from '../../entities/music';
 
 @Component({
   selector: 'app-home',
@@ -12,29 +12,29 @@ import { Musique } from '../../musique';
 export class HomeComponent implements OnInit {
   private films: Film[];
   private series: Serie[];
-  private musiques: Musique[];
-  private annee: Date = new Date();
+  private musics: Music[];
+  private year: Date = new Date();
 
-  constructor(private oeuvreService: OeuvreService ) { }
+  constructor(private artworkService: ArtworkService ) { }
 
   ngOnInit() {
-    this.oeuvreService.findFilmByAnnee(this.annee.getFullYear()).subscribe((films)=>{
+    this.artworkService.findFilmByYear(this.year.getFullYear()).subscribe((films)=>{
       console.log(films);
         this.films = films;
     }, (error)=>{
       console.log(error);
     });
 
-    this.oeuvreService.findSerieByAnnee(this.annee.getFullYear()).subscribe((series)=>{
+    this.artworkService.findSerieByYear(this.year.getFullYear()).subscribe((series)=>{
       console.log(series);
         this.series = series;
     }, (error)=>{
       console.log(error);
     });
 
-    this.oeuvreService.findMusiqueByAnnee(this.annee.getFullYear()).subscribe((musiques)=>{
-      console.log(musiques);
-        this.musiques = musiques;
+    this.artworkService.findMusicByYear(this.year.getFullYear()).subscribe((musics)=>{
+      console.log(musics);
+        this.musics = musics;
     }, (error)=>{
       console.log(error);
     });
@@ -54,12 +54,12 @@ export class HomeComponent implements OnInit {
   setSeries(series: Serie[]) {
     this.series = series;
   }
-  getMusiques(): Musique[]{
-    return this.musiques;
+  getMusics(): Music[]{
+    return this.musics;
   }
 
-  setMusiques(musiques: Musique[]) {
-    this.musiques = musiques;
+  setMusics(musics: Music[]) {
+    this.musics = musics;
   }
 
 

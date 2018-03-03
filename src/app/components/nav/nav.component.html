@@ -22,14 +22,14 @@
                     <a [routerLink]="['/browse', 'series']">Series</a>
                 </li>
                 <li>
-                    <a [routerLink]="['/browse', 'musiques']">Musique</a>
+                    <a [routerLink]="['/browse', 'musics']">Musique</a>
                 </li>
             </ul>
             <form class="navbar-form navbar-left" action="">
               <div class="input-group">
-                <input type="text" class="form-control" name="search" placeholder="Chercher" [(ngModel)]="titre">
+                <input type="text" class="form-control" name="search" placeholder="Chercher" [(ngModel)]="title">
                 <div class="input-group-btn">
-                  <button class="btn btn-default" (click)="chercherOeuvre()">
+                  <button class="btn btn-default" (click)="searchArtwork()">
                     <i class="glyphicon glyphicon-search"></i>
                   </button>
                 </div>

@@ -8,8 +8,8 @@
 
             <div class="container--box" *ngFor="let film of getFilms()" >
             <div class="content--box" >
-              <a [routerLink]="['/oeuvre', film.id]"  href="javascript:void(0);">
-                <h3 class="title">{{film.titre}}</h3>
+              <a [routerLink]="['/artwork', film.id]"  href="javascript:void(0);">
+                <h3 class="title">{{film.title}}</h3>
                 <!-- effet slider -->
                 <div class="content-overlay"></div>
                 <img class="content-image" src="{{film.image}}" alt="Image du film" width="400" height="350">
@@ -35,8 +35,8 @@
 
           <div class="container--box" *ngFor="let serie of getSeries()">
             <div class="content--box">
-              <a routerLink="/oeuvre/{{serie.id}}" href="javascript:void(0);">
-                <h3 class="title">{{serie.titre}}</h3>
+              <a routerLink="/artwork/{{serie.id}}" href="javascript:void(0);">
+                <h3 class="title">{{serie.title}}</h3>
                 <!-- effet slider -->
                 <div class="content-overlay"></div>
                 <img class="content-image" src="{{serie.image}}" alt="Image du film" width="400" height="350">
@@ -60,13 +60,13 @@
       <div class="row layout">
         <div class="col-md-12">
 
-          <div class="container--box" *ngFor="let musique of getMusiques()">
+          <div class="container--box" *ngFor="let music of getMusics()">
             <div class="content--box">
-              <a routerLink="/oeuvre/{{musique.id}}" href="javascript:void(0);">
-                <h3 class="title">{{musique.titre}}</h3>
+              <a routerLink="/artwork/{{music.id}}" href="javascript:void(0);">
+                <h3 class="title">{{music.title}}</h3>
                 <!-- effet slider -->
                 <div class="content-overlay"></div>
-                <img class="content-image" src="{{musique.image}}" alt="Image du film" width="400" height="350">
+                <img class="content-image" src="{{music.image}}" alt="Image du film" width="400" height="350">
                 <div class="content-details fadeIn-bottom">
                   <h3><i style="display: block; padding-top: 20%;"  class="fa fa-search-plus" aria-hidden="true"></i></h3><br><br>
                 </div>

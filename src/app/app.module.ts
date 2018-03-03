@@ -5,27 +5,27 @@ import {HttpModule} from '@angular/http';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 import { AppComponent } from './app.component';
-import { ListOeuvresComponent } from './components/list-oeuvres/list-oeuvres.component';
+import { ListArtworksComponent } from './components/list-artworks/list-artworks.component';
 import { NavComponent } from './components/nav/nav.component';
-import { OeuvreDetailComponent } from './components/oeuvre-detail/oeuvre-detail.component';
+import { ArtworkDetailComponent } from './components/artwork-detail/artwork-detail.component';
 import { HomeComponent } from './components/home/home.component';
-import { OeuvreService } from './services/oeuvre.service';
+import { ArtworkService } from './services/artwork.service';
 import { FormsModule } from '@angular/forms';
 
 
 const appRoutes: Routes = [
   {path: 'home', component: HomeComponent},
-  {path: 'browse/:cat', component: ListOeuvresComponent},
-  {path: 'oeuvre/:id', component: OeuvreDetailComponent},
+  {path: 'browse/:cat', component: ListArtworksComponent},
+  {path: 'artwork/:id', component: ArtworkDetailComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListOeuvresComponent,
+    ListArtworksComponent,
     NavComponent,
-    OeuvreDetailComponent,
+    ArtworkDetailComponent,
     HomeComponent
   ],
   imports: [
@@ -35,7 +35,7 @@ const appRoutes: Routes = [
     ModalModule.forRoot(),
     FormsModule
   ],
-  providers: [OeuvreService],
+  providers: [ArtworkService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

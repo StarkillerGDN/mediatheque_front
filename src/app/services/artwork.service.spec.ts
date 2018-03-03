@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { OeuvreService } from './oeuvre.service';
+import { ArtworkService } from './artwork.service';
 
 describe('OeuvreService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [OeuvreService]
+      providers: [ArtworkService]
     });
   });
 
-  it('should be created', inject([OeuvreService], (service: OeuvreService) => {
+  it('should be created', inject([ArtworkService], (service: ArtworkService) => {
     expect(service).toBeTruthy();
   }));
 });

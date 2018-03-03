@@ -1,17 +1,17 @@
 <div class="row" id="contenu">
 
   <div class="col-md-12">
-    <h1>{{titre}}</h1>
+    <h1>{{title}}</h1>
     <hr class="lineTitle">
     <div class="row layout">
       <div class="col-md-12">
-        <div class="container--box" *ngFor="let oeuvre of oeuvres" >
+        <div class="container--box" *ngFor="let artwork of artworks" >
           <div class="content--box" >
-            <a [routerLink]="['/oeuvre', oeuvre.id]"  href="javascript:void(0);">
-              <h3 class="title">{{oeuvre.titre}}</h3>
+            <a [routerLink]="['/artwork', artwork.id]"  href="javascript:void(0);">
+              <h3 class="title">{{artwork.title}}</h3>
               <!-- effet slider -->
               <div class="content-overlay"></div>
-              <img class="content-image" src="{{oeuvre.image}}" alt="Image du film" width="400" height="350">
+              <img class="content-image" src="{{artwork.image}}" alt="Image du film" width="400" height="350">
               <div class="content-details fadeIn-bottom">
                 <h3><i style="display: block; padding-top: 20%;"  class="fa fa-search-plus" aria-hidden="true"></i></h3><br><br>
               </div>
