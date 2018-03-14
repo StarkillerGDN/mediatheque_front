@@ -6,21 +6,15 @@ import { ArtworkService } from '../../services/artwork.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
-
-  title: string ="";
-  tabArtworks: any[];
-  constructor(private artworkService: ArtworkService) { }
+export class NavComponent implements OnInit  {
+  title: string;
+  constructor() { }
 
   ngOnInit() {
   }
 
-  searchArtwork(){
-    this.artworkService.findByTitle(this.title).subscribe((artworks)=>{
-      console.log(artworks);
-      this.tabArtworks = artworks;
-    }, (error)=>{
-      console.log(error);
-    });
+  cleanBar(){
+    this.title = '';
   }
 }
+

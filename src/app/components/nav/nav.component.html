@@ -29,7 +29,7 @@
               <div class="input-group">
                 <input type="text" class="form-control" name="search" placeholder="Chercher" [(ngModel)]="title">
                 <div class="input-group-btn">
-                  <button class="btn btn-default" (click)="searchArtwork()">
+                  <button class="btn btn-default" [routerLink]="['/search', title]" (click)="cleanBar()">
                     <i class="glyphicon glyphicon-search"></i>
                   </button>
                 </div>

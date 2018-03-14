@@ -26,7 +26,7 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
    //Récupération id oeuvre select
    getRouteParam(){
     this.sub = this.route.params.subscribe(params => {
-    this.catArtwork = params['cat']; // (+) converts string 'id' to a number
+    this.catArtwork = params['cat'];
     this.getArtworks();
    });
   }
