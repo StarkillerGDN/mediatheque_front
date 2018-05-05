@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ArtworkService } from '../../services/artwork.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './search-results.component.html',
   styleUrls: ['./search-results.component.css']
 })
-export class SearchResultsComponent implements OnInit {
+export class SearchResultsComponent implements OnInit, OnDestroy {
   tabArtworks: any[];
   title: string = '';
   private sub: any;

@@ -1,10 +1,45 @@
-<div class="row" id="contenu">
+<div class="row" id="filtre_layout">
+  <div class="col-md-12">
+    <form action="" class="form-inline" role="form">
+      <ng-container *ngIf="checkCat; else musicTemplate">
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Acteur" name="acteur_filtre" id="acteur_filtre" (keypress)="disableInput($event)" (mouseleave)="disableInput($event)" disabled={{disableActorInput}} [(ngModel)]="chosenActor">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Réalisateur" name="realisateur_filtre" id="realisateur_filtre" [(ngModel)]="chosenDirector"  (keypress)="disableInput($event)" (mouseleave)="disableInput($event)" disabled={{disableDirectorInput}}>
+          </div>
+      </ng-container>
+      <div class="form-group" >
+        <select class="form-control" name="annee_filtre" id="annee_filtre" (focus)="disableInput($event)" (mouseleave)="disableInput($event)" disabled={{disableYearInput}} [(ngModel)]="chosenYear">
+          <option>Année</option>
+          <option *ngFor="let year of tabYear">{{year}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <select class="form-control" name="genre_filtre" id="genre_filtre" (focus)="disableInput($event)" (mouseleave)="disableInput($event)" disabled={{disableTypeInput}} [(ngModel)]="chosenType">
+          <option>Genre</option>
+          <option *ngFor="let type of tabType">{{type}}</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="filterContent()"> <span class="glyphicon glyphicon-search" style="color: #F0C300;"></span></button>
+    </form>
+  </div>
+</div>
+
+
+<ng-template #musicTemplate>
+  <div class="form-group">
+      <input type="text" class="form-control" placeholder="Artiste" name="artist_filtre" id="artist_filtre" (keypress)="disableInput($event)" (mouseleave)="disableInput($event)" disabled={{disableArtistInput}} [(ngModel)]="chosenArtist" >
+  </div>
+</ng-template>
+
+<div class="row" id="contenu" *ngIf="isCheck == false; else filteredByType ">
 
   <div class="col-md-12">
     <h1>{{title}}</h1>
     <hr class="lineTitle">
     <div class="row layout">
-      <div class="col-md-12">
+      <div class="col-md-12 col-xs-12">
         <div class="container--box" *ngFor="let artwork of artworks" >
           <div class="content--box" >
             <a [routerLink]="['/artwork', artwork.id]"  href="javascript:void(0);">
@@ -23,3 +58,32 @@
   </div>
 
 </div>
+
+<ng-template #filteredByType>
+  <div class="col-md-12">
+    <h1>{{title}}</h1>
+    <hr class="lineTitle">
+    <div class="row layout">
+      <div class="col-md-12">
+        <ng-container *ngFor="let artwork of artworksFilteredByType">
+          <ng-container *ngIf="artwork.type == chosenTypeTempo">
+            <div class="container--box" >
+              <div class="content--box" >
+                <a [routerLink]="['/artwork', artwork.id]"  href="javascript:void(0);">
+                  <h3 class="title">{{artwork.title}}</h3>
+                  <!-- effet slider -->
+                  <div class="content-overlay"></div>
+                  <img class="content-image" src="{{artwork.image}}" alt="Image du film" width="400" height="350">
+                  <div class="content-details fadeIn-bottom">
+                    <h3><i style="display: block; padding-top: 20%;"  class="fa fa-search-plus" aria-hidden="true"></i></h3><br><br>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+
+      </div>
+    </div>
+  </div>
+</ng-template>

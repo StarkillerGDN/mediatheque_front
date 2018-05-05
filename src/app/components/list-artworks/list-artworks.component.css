@@ -1,0 +1,35 @@
+#filtre_layout{
+  position: relative;
+  margin-top: 20px;
+}
+#filtre_layout input, #filtre_layout button, #filtre_layout select{
+  margin-left: 10px;
+}
+#filtre_layout button{
+  font-family: 'Questrial', 'sans-serif';
+  font-size: 15px;
+  color: #FEFEFE;
+  background-color: #1560BD;
+}
+select:first-child, :last-child{
+  color: gray;
+}
+button span{
+  display: block;
+
+}
+@media screen and (max-width: 640px){
+  #filtre_layout input, #filtre_layout select{
+    margin-left: inherit;
+  }
+  #filtre_layout button{
+    display: block;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 768px and max-width: 1024){
+  #filtre_layout form{
+    display: block;
+  }
+}

@@ -63,7 +63,7 @@ export class ArtworkService {
   }
 
   findSerieByDirector(name: string){
-    return this.http.get(this.baseUrl + '/series/byDirector' + name, this.options).map((response: Response)=>response.json()).catch(this.errorHandler);
+    return this.http.get(this.baseUrl + '/series/byDirector/' + name, this.options).map((response: Response)=>response.json()).catch(this.errorHandler);
   }
 
   findFilmByActor(name: string){
@@ -74,7 +74,7 @@ export class ArtworkService {
     return this.http.get(this.baseUrl + '/series/byActor/' + name, this.options).map((response: Response)=>response.json()).catch(this.errorHandler);
   }
 
-  findMusiqueByArtist(name: string){
+  findMusicByArtist(name: string){
     return this.http.get(this.baseUrl + '/musics/byArtist/' + name, this.options).map((response: Response)=>response.json()).catch(this.errorHandler);
   }
 
@@ -82,15 +82,15 @@ export class ArtworkService {
     return this.http.get(this.baseUrl + '/artworks/byTitle/' + title, this.options).map((response: Response)=>response.json()).catch(this.errorHandler);
   }
 
-  findFilmByYear(year: Number){
+  findFilmByYear(year: number){
     return this.http.get(this.baseUrl + '/films/byYear/' + year, this.options).map((response: Response)=>response.json()).catch(this.errorHandler);
   }
 
-  findSerieByYear(year: Number){
+  findSerieByYear(year: number){
     return this.http.get(this.baseUrl + '/series/byYear/' + year, this.options).map((response: Response)=>response.json()).catch(this.errorHandler);
   }
 
-  findMusicByYear(year: Number){
+  findMusicByYear(year: number){
     return this.http.get(this.baseUrl + '/musics/byYear/' + year, this.options).map((response: Response)=>response.json()).catch(this.errorHandler);
   }
 

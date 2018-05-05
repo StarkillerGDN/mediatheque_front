@@ -26,7 +26,7 @@ p{
   color: #F0C300;
   border: 0 none;
 }
-/***************************Box Oeuvres (utilisé dans homeComponent et listOeuvreComponent***************************/
+/***************************Box Oeuvres***************************/
 .layout{
   width: 100%;
 }
@@ -103,8 +103,13 @@ p{
 
 @media screen and (max-width: 640px){
 
+  #contenu h1{
+    text-align: center;
+
+  }
   .container--box{
     width: 100%;
+    padding-left: 2em;
   }
 
 }
