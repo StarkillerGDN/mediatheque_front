@@ -6,6 +6,7 @@ import { Music } from '../../entities/music';
 import { ActivatedRoute } from '@angular/router';
 import { ArtworkService } from '../../services/artwork.service';
 import { Observable } from 'rxjs/Observable';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-list-artworks',
@@ -36,6 +37,9 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
   disableActorInput = false;
   disableYearInput = false;
   disableTypeInput = false;
+  disableSearchButton = true;
+  displaySearchButton = false;
+  displayRemoveButton = false;
 
   constructor(private artworkService: ArtworkService, private route: ActivatedRoute) { }
 
@@ -54,12 +58,14 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
 
   //Requete sur l'oeuvre select
   getArtworks(){
+    //Gère les boutons des filtres
+    this.displaySearchButton = true;
+    this.displayRemoveButton = false;
 
     this.fillTypeFilter(this.catArtwork);
 
     if(this.catArtwork == "films"){
       this.artworkService.getFilms().subscribe((artworks)=>{
-        console.log(artworks);
         this.artworks = artworks;
         this.artworksFilteredByType = artworks;
       }, (error)=>{
@@ -70,12 +76,9 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
       this.title = "Films"
       this.checkCat = true;
 
-      console.log(this.tabType);
-
     } else if(this.catArtwork == "series"){
 
       this.artworkService.getSeries().subscribe((artworks)=>{
-        console.log(artworks);
         this.artworks = artworks;
         this.artworksFilteredByType = artworks;
       }, (error)=>{
@@ -88,7 +91,6 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
     } else if(this.catArtwork == "musics"){
 
       this.artworkService.getMusics().subscribe((artworks)=>{
-        console.log(artworks);
         this.artworks = artworks;
         this.artworksFilteredByType = artworks;
       }, (error)=>{
@@ -114,6 +116,8 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
   }
 
   filterContent(){
+    this.displaySearchButton = false;
+    this.displayRemoveButton = true;
     //Requetes par rapport aux champs du filtre
     if(this.catArtwork == 'films'){
       if(this.chosenActor != ''){
@@ -151,7 +155,6 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
       if(this.chosenActor != ''){
         this.isCheck =  false;
         this.artworkService.findSerieByActor(this.chosenActor).subscribe((artworks)=>{
-          console.log(this.artworks);
           this.artworks = artworks;
         }, (error)=>{
           console.log(error);
@@ -212,10 +215,39 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
     this.chosenYear = 'Année';
     this.chosenType = 'Genre';
   }
+  //Supprime les filtres
+  removeFilter(){
+    this.displaySearchButton = true;
+    this.displayRemoveButton = false;
+    this.isCheck = false;
+    if(this.catArtwork == 'films'){
+      this.artworkService.getFilms().subscribe((artworks)=>{
+        this.artworks = artworks;
+        this.artworksFilteredByType = artworks;
+      },(error)=>{
+        console.log(error);
+      });
+    }else if(this.catArtwork == 'series'){
+      this.artworkService.getSeries().subscribe((artworks)=>{
+        this.artworks = artworks;
+        this.artworksFilteredByType = artworks;
+      }, (error)=>{
+        console.log(error);
+      });
+    }else if(this.catArtwork == 'musics'){
+      this.artworkService.getMusics().subscribe((artworks)=>{
+        this.artworks = artworks;
+        this.artworksFilteredByType = artworks;
+      }, (error)=>{
+        console.log(error);
+      })
+    }
+  }
 
   disableInput(event){
     if(event.target.id == "acteur_filtre"){
       if(event.type == 'keypress'){
+        this.disableSearchButton = false;
         this.disableActorInput = false;
         this.disableDirectorInput = true;
         this.disableTypeInput = true;
@@ -225,10 +257,12 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
         this.disableDirectorInput = false;
         this.disableTypeInput = false;
         this.disableYearInput = false;
+        this.disableSearchButton = true;
       }
     }
     if(event.target.id == "realisateur_filtre"){
       if(event.type == 'keypress'){
+        this.disableSearchButton = false;
         this.disableActorInput = true;
         this.disableDirectorInput = false;
         this.disableTypeInput = true;
@@ -238,10 +272,12 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
         this.disableDirectorInput = false;
         this.disableTypeInput = false;
         this.disableYearInput = false;
+        this.disableSearchButton = true;
       }
     }
     if(event.target.id == "annee_filtre"){
       if(event.type == 'focus'){
+        this.disableSearchButton = false;
         this.disableActorInput = true;
         this.disableDirectorInput = true;
         this.disableTypeInput = true;
@@ -251,10 +287,12 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
         this.disableDirectorInput = false;
         this.disableTypeInput = false;
         this.disableYearInput = false;
+        this.disableSearchButton = true;
       }
     }
     if(event.target.id == "genre_filtre"){
       if(event.type == 'focus'){
+        this.disableSearchButton = false;
         this.disableActorInput = true;
         this.disableDirectorInput = true;
         this.disableTypeInput = false;
@@ -264,11 +302,13 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
         this.disableDirectorInput = false;
         this.disableTypeInput = false;
         this.disableYearInput = false;
+        this.disableSearchButton = true;
       }
 
     }
     if(event.target.id == "artist_filtre"){
       if(event.type == 'keypress'){
+        this.disableSearchButton = false;
         this.disableArtistInput = false;
         this.disableTypeInput = true;
         this.disableYearInput = true;
@@ -276,6 +316,7 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
         this.disableArtistInput = false;
         this.disableTypeInput = false;
         this.disableYearInput = false;
+        this.disableSearchButton = true;
       }
     }
   }

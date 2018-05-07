@@ -21,8 +21,10 @@
           <option *ngFor="let type of tabType">{{type}}</option>
         </select>
       </div>
-      <button type="submit" class="btn btn-primary" (click)="filterContent()"> <span class="glyphicon glyphicon-search" style="color: #F0C300;"></span></button>
+      <button type="submit" class="btn btn-primary" (click)="filterContent($event)" *ngIf="displaySearchButton" [disabled]=disableSearchButton> <span class="glyphicon glyphicon-search" style="color: #F0C300;"></span></button>
+      <button class="btn btn-primary" (click)="removeFilter()" *ngIf="displayRemoveButton"><span class="glyphicon glyphicon-remove-sign" style="color: #F0C300;"></span></button>
     </form>
+
   </div>
 </div>
 
