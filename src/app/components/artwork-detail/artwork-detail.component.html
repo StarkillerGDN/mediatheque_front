@@ -3,16 +3,18 @@
 
     <div class="col-md-3 col-xs-12">
       <div id="photoOeuvreLayout">
-        <img src="{{artwork?.image}}" alt="Image oeuvre" width="250" height="400"> <!-- ? : observable est async donc pas sûr d'avoir la donnée au moment où je veux l'appeler donc la donnée est indéfini et donc null donc exception-->
+        <img src="{{artwork?.image}}" alt="Image oeuvre" width="270" height="400"> <!-- ? : observable est async donc pas sûr d'avoir la donnée au moment où je veux l'appeler donc la donnée est indéfini et donc null donc exception-->
       </div>
     </div>
 
     <div class="col-md-9 col-xs-12">
       <div id="rightLayout">
-          <h2>{{artwork?.title}}</h2>
-          <span class="label label-success">{{artwork?.type}}</span>
-          <h4>{{artwork?.year}}</h4>
-          <h4>{{artwork?.duration}} minutes</h4>
+          <div id="artworkTitle">
+            <h2>{{artwork?.title}}</h2>
+            <span class="label label-success">{{artwork?.type}}</span>
+          </div>
+          <h4><span class="titleStyle">Année de sortie  : </span>{{artwork?.year}}</h4>
+          <h4><span class="titleStyle">Durée : </span>{{artwork?.duration}} minutes</h4>
       </div>
     </div>
   </div>
@@ -21,8 +23,8 @@
 <div class="row" id="layoutMid">
   <div class="col-md-12">
     <div class="col-xs-12">
-        <div id="descriptionLayout">
-          <h4>Description</h4>
+        <div>
+          <h4 class="titleStyle">Description</h4>
           <p>
             {{artwork?.description}}
           </p>
@@ -31,11 +33,11 @@
 
       <div class="col-xs-12">
         <ng-container *ngIf="artwork?.director; else artistTemplate">
-            <h4>Realisateur : {{artwork?.director.firstname}} {{artwork?.director.name}}</h4>
+            <h4><span class="titleStyle">Realisateur : </span>{{artwork?.director.firstname}} {{artwork?.director.name}}</h4>
         </ng-container>
 
         <ng-template #artistTemplate>
-          <h4>Artistes</h4>
+          <h4 class="titleStyle">Artistes</h4>
           <div class="col-md-2" *ngFor="let artist of artwork?.artists">
             <img class="img-circle" src="{{artist.image}}" width="130" height="130" alt="Image Artiste">
             <p>{{artist.firstname}} {{artist.name}}</p>
@@ -44,8 +46,8 @@
     </div>
 
     <div *ngIf="artwork?.actors" class="col-xs-12">
-      <h4>Acteurs :</h4>
-      <div class="col-md-2" *ngFor="let actor of artwork?.actors">
+      <h4 class="titleStyle">Acteurs :</h4>
+      <div class="col-md-2" id="acteurLayout" *ngFor="let actor of artwork?.actors">
         <img class="img-circle" src="{{actor.image}}"  width="130" height="130" alt="Image Acteur">
         <p>{{actor.firstname}} {{actor.name}}</p>
       </div>

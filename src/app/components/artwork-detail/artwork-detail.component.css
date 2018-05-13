@@ -1,21 +1,59 @@
 #layoutTop{
+  display: block;
   margin-top: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
 #rightLayout{
   display: block;
-
+}
+#rightLayout h4{
+  font-size: 1.2em;
 }
 
-#rightLayout h2{
+#artworkTitle span{
+  position: relative;
+  bottom: 6px;
+  left: 10px;
+  font-size: 0.9em;
+}
+#artworkTitle h2{
   display: inline;
+  font-size: 2.2em;
 }
 
-#rightLayout span{
-  font-size: 13px;
-  margin-left: 20px;
-}
 
 #layoutMid{
   margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
+#descriptionLayout p{
+  text-align: justify;
+}
+.titleStyle{
+  color: #F0C300;
+}
+@media screen and (max-width: 640px){
+  #artworkTitle h2{
+    font-size: 1.9em;
+  }
+  #acteurLayout img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #acteurLayout p{
+    text-align: center;
+  }
+  #artworkTitle span{
+    position: relative;
+    bottom: 4px;
+    left: 10px;
+    font-size: 0.8em;
+  }
+  #rightLayout{
 
+  }
+}

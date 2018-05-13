@@ -35,7 +35,6 @@ export class ArtworkDetailComponent implements OnInit, OnDestroy  {
   //Requete sur l'oeuvre select
   getSelectedArtwork(){
     this.artworkService.getArtwork(this.id).subscribe((artwork)=>{
-      console.log(artwork);
       this.artwork = artwork;
     }, (error)=>{
       console.log(error);

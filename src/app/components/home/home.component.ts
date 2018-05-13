@@ -19,21 +19,18 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.artworkService.findFilmByYear(this.year.getFullYear()).subscribe((films)=>{
-      console.log(films);
         this.films = films;
     }, (error)=>{
       console.log(error);
     });
 
     this.artworkService.findSerieByYear(this.year.getFullYear()).subscribe((series)=>{
-      console.log(series);
         this.series = series;
     }, (error)=>{
       console.log(error);
     });
 
     this.artworkService.findMusicByYear(this.year.getFullYear()).subscribe((musics)=>{
-      console.log(musics);
         this.musics = musics;
     }, (error)=>{
       console.log(error);
