@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http, Response, Headers, RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
 
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
@@ -9,7 +10,7 @@ import 'rxjs/add/observable/throw';
 @Injectable()
 export class ArtworkService {
   //Url server
-  private baseUrl:string="http://localhost:8080";
+  private baseUrl = environment.baseUrlService;
   //Type de content used : JSON
   private headers = new Headers({'Content-type' : 'application/json'});
   private options = new RequestOptions({headers: this.headers});
