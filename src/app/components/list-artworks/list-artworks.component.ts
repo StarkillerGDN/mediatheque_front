@@ -246,7 +246,7 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
 
   disableInput(event){
     if(event.target.id == "acteur_filtre"){
-      if(event.type == 'keypress'){
+      if(event.type == 'focus'){
         this.disableSearchButton = false;
         this.disableActorInput = false;
         this.disableDirectorInput = true;
@@ -261,7 +261,7 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
       }
     }
     if(event.target.id == "realisateur_filtre"){
-      if(event.type == 'keypress'){
+      if(event.type == 'focus'){
         this.disableSearchButton = false;
         this.disableActorInput = true;
         this.disableDirectorInput = false;
@@ -307,7 +307,7 @@ export class ListArtworksComponent implements OnInit, OnDestroy {
 
     }
     if(event.target.id == "artist_filtre"){
-      if(event.type == 'keypress'){
+      if(event.type == 'focus'){
         this.disableSearchButton = false;
         this.disableArtistInput = false;
         this.disableTypeInput = true;

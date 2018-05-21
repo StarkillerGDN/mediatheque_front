@@ -3,10 +3,10 @@
     <form action="" class="form-inline" role="form">
       <ng-container *ngIf="checkCat; else musicTemplate">
         <div class="form-group">
-            <input type="text" class="form-control" placeholder="Acteur" name="acteur_filtre" id="acteur_filtre" (keypress)="disableInput($event)" (mouseleave)="disableInput($event)" disabled={{disableActorInput}} [(ngModel)]="chosenActor">
+            <input type="text" class="form-control" placeholder="Acteur" name="acteur_filtre" id="acteur_filtre" (focus)="disableInput($event)" (mouseleave)="disableInput($event)" disabled={{disableActorInput}} [(ngModel)]="chosenActor">
           </div>
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Réalisateur" name="realisateur_filtre" id="realisateur_filtre" [(ngModel)]="chosenDirector"  (keypress)="disableInput($event)" (mouseleave)="disableInput($event)" disabled={{disableDirectorInput}}>
+            <input type="text" class="form-control" placeholder="Réalisateur" name="realisateur_filtre" id="realisateur_filtre" [(ngModel)]="chosenDirector"  (focus)="disableInput($event)" (mouseleave)="disableInput($event)" disabled={{disableDirectorInput}}>
           </div>
       </ng-container>
       <div class="form-group" >
@@ -31,7 +31,7 @@
 
 <ng-template #musicTemplate>
   <div class="form-group">
-      <input type="text" class="form-control" placeholder="Artiste" name="artist_filtre" id="artist_filtre" (keypress)="disableInput($event)" (mouseleave)="disableInput($event)" disabled={{disableArtistInput}} [(ngModel)]="chosenArtist" >
+      <input type="text" class="form-control" placeholder="Artiste" name="artist_filtre" id="artist_filtre" (focus)="disableInput($event)" (mouseleave)="disableInput($event)" disabled={{disableArtistInput}} [(ngModel)]="chosenArtist" >
   </div>
 </ng-template>
 
