@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ArtworkService } from './services/artwork.service';
 import { FormsModule } from '@angular/forms';
 import { SearchResultsComponent } from './components/search-results/search-results.component';
+import { FooterComponent } from './components/footer/footer/footer.component';
 
 
 const appRoutes: Routes = [
@@ -29,7 +30,8 @@ const appRoutes: Routes = [
     NavComponent,
     ArtworkDetailComponent,
     HomeComponent,
-    SearchResultsComponent
+    SearchResultsComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

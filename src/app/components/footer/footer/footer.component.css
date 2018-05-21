@@ -1,0 +1,15 @@
+.footer {
+  position: relative;
+  margin-top: 25px;
+  width: 100%;
+  height: 60px;
+}
+.footer p{
+  text-align: center;
+  font-weight: bold;
+}
+.footer span{
+  color: #F0C300;
+  font-weight: initial;
+  font-size: 0.8em;
+}
